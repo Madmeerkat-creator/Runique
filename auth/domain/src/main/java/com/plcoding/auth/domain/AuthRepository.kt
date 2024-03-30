@@ -6,5 +6,6 @@ import com.plcoding.core.domain.util.EmptyResult
 data 와 presentation에서 접근해야 돼서 여기에 구현
  */
 interface AuthRepository {
+    suspend fun login(email: String, password: String): EmptyResult<DataError.Network>
     suspend fun register(email: String, password: String): EmptyResult<DataError.Network>
 }
