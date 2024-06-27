@@ -24,6 +24,8 @@ import timber.log.Timber
 
 /* <6.5.3>
 다른 네트워크에서도 호출되기 위해 core 폴더에 생성
+<6.7.1>
+- add sessionStorage
  */
 class HttpClientFactory(
     private val sessionStorage: SessionStorage
@@ -53,6 +55,10 @@ class HttpClientFactory(
                 contentType(ContentType.Application.Json)
                 header("x-api-key", BuildConfig.API_KEY)
             }
+            /*
+            <6.7.1>
+            - add install(Auth)
+            */
             install(Auth) {
                 bearer {
                     loadTokens {
