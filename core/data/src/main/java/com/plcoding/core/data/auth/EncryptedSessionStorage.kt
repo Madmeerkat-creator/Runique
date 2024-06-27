@@ -8,6 +8,10 @@ import kotlinx.coroutines.withContext
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 
+/* <6.6.3>
+sensitive data
+encrypt sharedPreferences -> 다른 앱들이 우리의 sharedPreferences에 접근할 수 없도록
+ */
 class EncryptedSessionStorage(
     private val sharedPreferences: SharedPreferences
 ): SessionStorage {
@@ -27,7 +31,11 @@ class EncryptedSessionStorage(
                 sharedPreferences.edit().remove(KEY_AUTH_INFO).commit()
                 return@withContext
             }
-
+            /*
+             if we want to convert data class to json using kotlinx.serialization,
+             it need annotation serializable.
+             하지만 AuthInfo는 독립적이어야 하기 때문에 serializable을 붙일 수 없음
+             */
             val json = Json.encodeToString(info.toAuthInfoSerializable())
             sharedPreferences
                 .edit()

@@ -5,7 +5,9 @@ import androidx.security.crypto.EncryptedSharedPreferences
 import androidx.security.crypto.MasterKey
 import org.koin.android.ext.koin.androidApplication
 import org.koin.dsl.module
-
+/* <6.6.6>
+- SharedPreferences 추가
+ */
 val appModule = module {
     single<SharedPreferences> {
         EncryptedSharedPreferences(

@@ -9,6 +9,8 @@ import org.koin.dsl.bind
 import org.koin.dsl.module
 /* <6.5.7>
 - HttpClientFactory 생성
+<6.6.7>
+- SharedPreferences 추가
  */
 val coreDataModule = module {
     single {
