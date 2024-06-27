@@ -1,5 +1,4 @@
 package com.plcoding.runique
-
 import android.app.Application
 import android.os.Build
 import com.plcoding.auth.data.di.authDataModule
@@ -25,6 +24,7 @@ class RuniqueApp: Application() {
             modules(
                 authDataModule,
                 authViewModelModule,
+                //<6.5.8> 추가
                 appModule,
                 coreDataModule
             )

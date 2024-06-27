@@ -15,6 +15,9 @@ import io.ktor.serialization.kotlinx.json.json
 import kotlinx.serialization.json.Json
 import timber.log.Timber
 
+/* <6.5.3>
+다른 네트워크에서도 호출되기 위해 core 폴더에 생성
+ */
 class HttpClientFactory {
 
     fun build(): HttpClient {
@@ -22,6 +25,7 @@ class HttpClientFactory {
             install(ContentNegotiation) {
                 json(
                     json = Json {
+                        //crash 를 막아줌
                         ignoreUnknownKeys = true
                     }
                 )
@@ -34,6 +38,8 @@ class HttpClientFactory {
                 }
                 level = LogLevel.ALL
             }
+            //default로 들어가면 좋을 것들
+            //나중에 overwrite이 가능함.
             defaultRequest {
                 contentType(ContentType.Application.Json)
                 header("x-api-key", BuildConfig.API_KEY)

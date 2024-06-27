@@ -56,6 +56,9 @@ fun RegisterScreenRoot(
     onSuccessfulRegistration: () -> Unit,
     viewModel: RegisterViewModel = koinViewModel(),
 ) {
+    /* <6.5.6>
+    viewModel의 events에 변화가 있을 떄 toast를 보내주기 위해 ObserveAsEvent 생성
+     */
     val context = LocalContext.current
     val keyboardController = LocalSoftwareKeyboardController.current
     ObserveAsEvents(viewModel.events) { event ->

@@ -22,7 +22,10 @@ import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
-
+/* <6.5.4>
+- authRepository 추가
+- create fun register()
+ */
 class RegisterViewModel(
     private val userDataValidator: UserDataValidator,
     private val repository: AuthRepository
@@ -31,6 +34,10 @@ class RegisterViewModel(
     var state by mutableStateOf(RegisterState())
         private set
 
+    /* <6.5.5>
+    ViewModel -> UI로 보내는 용도
+    Action과 비슷한 형태임
+     */
     private val eventChannel = Channel<RegisterEvent>()
     val events = eventChannel.receiveAsFlow()
 
@@ -58,6 +65,9 @@ class RegisterViewModel(
             .launchIn(viewModelScope)
     }
 
+    /*
+    UI -> ViewModel
+     */
     fun onAction(action: RegisterAction) {
         when(action) {
             RegisterAction.OnRegisterClick -> register()
@@ -70,6 +80,11 @@ class RegisterViewModel(
         }
     }
 
+    /*
+    api register call
+    결과에 따른 에러 처리도 함
+    - 에러가 나면 UI를 보여줌
+     */
     private fun register() {
         viewModelScope.launch {
             state = state.copy(isRegistering = true)
