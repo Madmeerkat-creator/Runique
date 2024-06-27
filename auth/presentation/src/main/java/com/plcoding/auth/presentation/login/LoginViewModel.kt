@@ -10,6 +10,8 @@ import com.plcoding.auth.domain.AuthRepository
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.receiveAsFlow
 
+/* <6.8.4>
+ */
 class LoginViewModel(
     private val authRepository: AuthRepository
 ): ViewModel() {

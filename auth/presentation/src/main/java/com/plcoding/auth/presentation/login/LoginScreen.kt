@@ -42,6 +42,8 @@ import com.plcoding.core.presentation.designsystem.components.RuniqueTextField
 import com.plcoding.core.presentation.ui.ObserveAsEvents
 import org.koin.androidx.compose.koinViewModel
 
+/* <6.8.5>
+ */
 @Composable
 fun LoginScreenRoot(
     onLoginSuccess: () -> Unit,
@@ -51,7 +53,7 @@ fun LoginScreenRoot(
     val context = LocalContext.current
     val keyboardController = LocalSoftwareKeyboardController.current
     ObserveAsEvents(viewModel.events) { event ->
-        when(event) {
+        when (event) {
             is LoginEvent.Error -> {
                 keyboardController?.hide()
                 Toast.makeText(
@@ -60,6 +62,7 @@ fun LoginScreenRoot(
                     Toast.LENGTH_LONG
                 ).show()
             }
+
             LoginEvent.LoginSuccess -> {
                 keyboardController?.hide()
                 Toast.makeText(
@@ -75,7 +78,7 @@ fun LoginScreenRoot(
     LoginScreen(
         state = viewModel.state,
         onAction = { action ->
-            when(action) {
+            when (action) {
                 is LoginAction.OnRegisterClick -> onSignUpClick()
                 else -> Unit
             }
@@ -165,10 +168,9 @@ private fun LoginScreen(
             }
             Box(
                 modifier = Modifier
-                    .align(Alignment.CenterHorizontally)
-                    .weight(1f),
+                    .align(Alignment.CenterHorizontally),
                 contentAlignment = Alignment.BottomCenter
-            ) {
+            ){
                 ClickableText(
                     text = annotatedString,
                     onClick = { offset ->
@@ -182,6 +184,26 @@ private fun LoginScreen(
                     }
                 )
             }
+
+//            Box(
+//                modifier = Modifier
+//                    .align(Alignment.CenterHorizontally)
+//                    .weight(1f),
+//                contentAlignment = Alignment.BottomCenter
+//            ) {
+//                ClickableText(
+//                    text = annotatedString,
+//                    onClick = { offset ->
+//                        annotatedString.getStringAnnotations(
+//                            tag = "clickable_text",
+//                            start = offset,
+//                            end = offset
+//                        ).firstOrNull()?.let {
+//                            onAction(LoginAction.OnRegisterClick)
+//                        }
+//                    }
+//                )
+//            }
         }
     }
 }

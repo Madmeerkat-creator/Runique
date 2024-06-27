@@ -4,7 +4,8 @@ package com.plcoding.auth.presentation.login
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.text2.input.TextFieldState
-
+/* <6.8.2>
+ */
 data class LoginState(
     val email: TextFieldState = TextFieldState(),
     val password: TextFieldState = TextFieldState(),
