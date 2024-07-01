@@ -36,6 +36,9 @@ class LoginViewModel(
     private val eventChannel = Channel<LoginEvent>()
     val events = eventChannel.receiveAsFlow()
 
+    /* <6.9.6>
+
+     */
     init {
         combine(state.email.textAsFlow(), state.password.textAsFlow()) { email, password ->
             state = state.copy(

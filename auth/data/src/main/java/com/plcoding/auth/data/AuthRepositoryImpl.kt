@@ -17,11 +17,19 @@ AuthRepository 가져와서 구현
 - httpClient.post
     response body에 대해서는 신경 안쓰니 Unit으로
  */
+/* <6.9.5>
+result에 대해 어디에 저장하지?
+AuthInfo에 저장해야겠다.
+저장하려면 sessionStorage가 필요함
+param으로 넘겨받자
+ */
 class AuthRepositoryImpl(
     private val httpClient: HttpClient,
     private val sessionStorage: SessionStorage
 ): AuthRepository {
 
+    /* <6.9.2>
+     */
     override suspend fun login(email: String, password: String): EmptyResult<DataError.Network> {
         val result = httpClient.post<LoginRequest, LoginResponse>(
             route = "/login",
