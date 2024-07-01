@@ -21,5 +21,7 @@ val appModule = module {
         )
     }
 
+    /* <6.10.7>
+     */
     viewModelOf(::MainViewModel)
 }

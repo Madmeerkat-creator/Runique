@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+<!-- <6.10.4>
+postSplashScreenTheme = Splash가 보여진 후에 보여질 Theme
+-->
     <style name="Theme.App.Starting" parent="Theme.SplashScreen">
         <item name="windowSplashScreenBackground">#222222</item>
         <item name="windowSplashScreenAnimatedIcon">@drawable/logo_scaled_down</item>

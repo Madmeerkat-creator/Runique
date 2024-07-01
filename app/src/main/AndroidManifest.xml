@@ -4,6 +4,11 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
 
+<!-- <6.10.5>
+Theme 변경
+allowBackup = false로 세팅하면 앱을 삭제할때 데이터를 전부 삭제함
+true면 데이터 일부가 저장되어 있음 sharedPreferences
+-->
     <application
         android:name=".RuniqueApp"
         android:allowBackup="false"

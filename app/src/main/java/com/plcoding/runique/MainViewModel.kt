@@ -8,6 +8,8 @@ import androidx.lifecycle.viewModelScope
 import com.plcoding.core.domain.SessionStorage
 import kotlinx.coroutines.launch
 
+/*<6.10.1>
+ */
 class MainViewModel(
     private val sessionStorage: SessionStorage
 ): ViewModel() {

@@ -16,6 +16,9 @@ fun NavigationRoot(
     navController: NavHostController,
     isLoggedIn: Boolean
 ) {
+    /* <6.10.6>
+    isLoggedIn에 따라 다른 화면
+     */
     NavHost(
         navController = navController,
         startDestination = if(isLoggedIn) "run" else "auth"
