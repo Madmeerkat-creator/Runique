@@ -43,6 +43,12 @@ import com.plcoding.core.presentation.designsystem.RuniqueGreen
 import com.plcoding.core.presentation.designsystem.RuniqueTheme
 import com.plcoding.core.presentation.designsystem.components.util.DropDownItem
 
+/* <7.1.3>
+스크롤에 따른 환경변화
+enterAlwaysScrollBehavior
+pinnedScrollBehavior
+exitUntilCollapsedScrollBehavior
+ */
 @Composable
 fun RuniqueToolbar(
     showBackButton: Boolean,
@@ -57,6 +63,9 @@ fun RuniqueToolbar(
     var isDropDownOpen by rememberSaveable {
         mutableStateOf(false)
     }
+    /* <7.1.4>
+    - colors : 배경을 투명하게 해주기 위해서
+     */
     TopAppBar(
         title = {
             Row(
